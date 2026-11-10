@@ -1,0 +1,8 @@
+{
+  "name": "teo-place",
+  "version": "1.0.0",
+  "description": "Collega a Claude i programmi teo.place installati su questo PC e spiega a Claude come usarli.",
+  "author": { "name": "teo.place", "url": "https://teo.place/" },
+  "homepage": "https://teo.place/",
+  "license": "Proprietary"
+}

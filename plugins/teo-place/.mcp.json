@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "sorterbarcode": {
+      "command": "C:\\Program Files\\SorterBarcode\\SorterBarcode.exe",
+      "args": [
+        "--mcp"
+      ]
+    },
+    "watchhost": {
+      "command": "C:\\Program Files\\watchHost\\watchHost.exe",
+      "args": [
+        "--mcp"
+      ]
+    },
+    "listbigstorage": {
+      "command": "C:\\Program Files\\listBigStorage\\listBigStorage.exe",
+      "args": [
+        "--mcp"
+      ]
+    },
+    "queryf5": {
+      "command": "C:\\Program Files\\queryF5\\queryF5.exe",
+      "args": [
+        "--mcp"
+      ]
+    }
+  }
+}

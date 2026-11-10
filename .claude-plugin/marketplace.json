@@ -1,0 +1,12 @@
+{
+  "name": "teo-place",
+  "owner": { "name": "teo.place", "url": "https://teo.place/" },
+  "description": "I programmi desktop di teo.place collegati a Claude Code.",
+  "plugins": [
+    {
+      "name": "teo-place",
+      "source": "./plugins/teo-place",
+      "description": "Collega a Claude i programmi teo.place installati su questo PC (oggi SorterBarcode) e spiega a Claude come usarli."
+    }
+  ]
+}

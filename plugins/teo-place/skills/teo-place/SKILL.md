@@ -22,14 +22,16 @@ Prima di un'azione che cambia qualcosa, di' all'utente cosa stai per fare.
 
 Il plugin avvia ogni server lanciando il programma installato con `--mcp`: un ponte su stdio che
 legge da solo il token del programma (mai scritto nella configurazione di Claude) e, se il
-programma e' chiuso, lo apre.
+programma e' chiuso, lo apre. Dalle versioni della colonna «si apre solo all'uso» il ponte
+risponde da solo all'elenco degli strumenti e apre il programma solo quando ne usi uno: non
+aprirne uno senza motivo.
 
-| programma | server | da che versione | note |
-|---|---|---|---|
-| SorterBarcode | `sorterbarcode` | 1.3.0 | lettore senza stato: niente da accendere, niente token |
-| watchHost | `watchhost` | 1.0.13 | se e' chiuso parte in background, senza aprire il browser |
-| listBigStorage | `listbigstorage` | 1.0.19 | se e' chiuso si apre la finestra |
-| queryF5 | `queryf5` | 1.2.14 | se e' chiuso si apre la finestra |
+| programma | server | da che versione | si apre solo all'uso | note |
+|---|---|---|---|---|
+| SorterBarcode | `sorterbarcode` | 1.3.0 | — | lettore senza stato: niente da accendere, niente token |
+| watchHost | `watchhost` | 1.0.13 | 1.0.15 | se e' chiuso parte in background, senza aprire il browser |
+| listBigStorage | `listbigstorage` | 1.0.19 | 1.0.21 | se e' chiuso si apre la finestra |
+| queryF5 | `queryf5` | 1.2.14 | 1.2.16 | se e' chiuso si apre la finestra |
 
 ## Se un server non risponde
 
@@ -45,9 +47,16 @@ dice gia' quale dei casi e'.
    accende: lo dice e si ferma.
 4. **Il programma sta partendo o chiede la licenza**: il ponte aspetta 25 secondi; se non basta,
    si ricollega il server da `/mcp` quando la finestra e' pronta.
+5. **Claude Desktop installato dallo Store, con una versione che apre ancora il programma da
+   dentro Claude** (watchHost fino alla 1.0.14, listBigStorage fino alla 1.0.20, queryF5 fino alla
+   1.2.15): il programma aperto dal ponte non parte, o parte senza server. Si apre dal menu Start,
+   si ricollega il server da `/mcp`, e si aggiorna: le versioni successive lo aprono tramite
+   Explorer.
 
 Un server ricollegato vale subito («Reconnect» da `/mcp`); un plugin appena installato dalla
-sessione successiva.
+sessione successiva. Quando un programma si aggiorna chiude anche i suoi ponti, perche' non
+blocchino i file da sostituire: di solito Claude li riapre da solo, altrimenti si ricollegano da
+`/mcp`.
 
 ## Regole d'uso
 

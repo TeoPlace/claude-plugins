@@ -23,6 +23,18 @@
       "args": [
         "--mcp"
       ]
+    },
+    "tracefox": {
+      "command": "C:\\Program Files\\TraceFox\\TraceFox.exe",
+      "args": [
+        "--mcp"
+      ]
+    },
+    "callapi": {
+      "command": "C:\\Program Files\\callApi\\callApi.exe",
+      "args": [
+        "--mcp"
+      ]
     }
   }
 }

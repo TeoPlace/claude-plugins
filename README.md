@@ -28,7 +28,9 @@ chiuso, lo apre.
 | watchHost | 1.0.13 |
 | listBigStorage | 1.0.19 |
 | queryF5 | 1.2.14 |
+| TraceFox | 1.0.13 |
+| callApi | 1.0.0 |
 
-watchHost, listBigStorage e queryF5 rispondono solo con **«Accesso per Claude» acceso** nelle loro
+watchHost, listBigStorage, queryF5, TraceFox e callApi rispondono solo con **«Accesso per Claude» acceso** nelle loro
 Impostazioni: e' spento di default, e il plugin non lo accende. I server MCP locali funzionano in
 Claude Code (terminale e scheda Code dell'app), non nella scheda Chat.

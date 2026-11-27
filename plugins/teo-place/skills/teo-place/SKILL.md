@@ -1,6 +1,6 @@
 ---
 name: teo-place
-description: Come usare da Claude i programmi desktop teo.place installati sul PC (SorterBarcode, watchHost, listBigStorage, queryF5, TraceFox, callApi) e cosa fare quando un loro server MCP non risponde. Usala quando l'utente chiede di leggere barcode da immagini, di guardare RAM/CPU/dischi dei server monitorati, di cercare file negli inventari, di interrogare un database MySQL dai profili di queryF5, di guardare il traffico HTTP/HTTPS registrato da TraceFox, di leggere le richieste delle collezioni di callApi, o nomina uno di questi programmi.
+description: Come usare da Claude i programmi desktop teo.place installati sul PC (SorterBarcode, watchHost, listBigStorage, queryF5, TraceFox, callApi, watchCLI) e cosa fare quando un loro server MCP non risponde. Usala quando l'utente chiede di leggere barcode da immagini, di guardare RAM/CPU/dischi dei server monitorati, di leggere o lanciare i monitor di comandi SSH di watchCLI, di cercare file negli inventari, di interrogare un database MySQL dai profili di queryF5, di guardare il traffico HTTP/HTTPS registrato da TraceFox, di leggere le richieste delle collezioni di callApi, o nomina uno di questi programmi.
 ---
 
 # I programmi teo.place da Claude
@@ -22,6 +22,11 @@ cambiare, programma per programma:
   di inviare richieste», INVIA richieste vere (`send_request`, `run_request`: GET, POST...). Non scrive file. Un POST
   puo' cambiare dati su un server vero: invia solo cio' che ti e' stato chiesto. Intestazioni, parametri e variabili
   che sembrano segreti escono come `[omesso]`.
+- **watchCLI**: legge server (senza segreti), collection, monitor e il loro ultimo output; lancia un
+  monitor una volta e ne aspetta il risultato (`run_monitor`), accende o spegne la ripetizione, crea
+  collection e monitor e ne cambia comando, server o intervallo, prova il collegamento a un server.
+  **`run_monitor` esegue davvero il comando sul server via SSH** (anche come root, sui server in
+  modalita' admin): lancia solo comandi che ti sono stati chiesti. Un monitor creato non parte da solo.
 - **TraceFox**: legge le transazioni registrate dal proxy (elenco, ricerca, intestazioni, tempi, corpo,
   curl, riassunto per host) e le regole; puo' accendere o fermare il proxy e mettere in pausa la
   registrazione. Non svuota la sessione e non cambia le regole. **Intestazioni sensibili e parametri
@@ -43,6 +48,7 @@ aprirne uno senza motivo.
 | queryF5 | `queryf5` | 1.2.14 | 1.2.16 | se e' chiuso si apre la finestra |
 | TraceFox | `tracefox` | 1.0.13 | 1.0.13 | se e' chiuso si apre la finestra |
 | callApi | `callapi` | 1.0.0 | 1.0.0 | se e' chiuso si apre la finestra |
+| watchCLI | `watchcli` | 2.0.8 | 2.0.8 | se e' chiuso si apre la finestra |
 
 ## Se un server non risponde
 
@@ -53,7 +59,7 @@ dice gia' quale dei casi e'.
    https://teo.place/ (il wizard teoSetup) o dal sito del prodotto.
 2. **Versione vecchia**: prima delle versioni in tabella `--mcp` non esiste, il programma si apre
    e il server non risponde. Si aggiorna dal programma stesso («Controlla aggiornamenti»).
-3. **L'accesso per Claude e' spento** (watchHost, listBigStorage, queryF5, TraceFox, callApi): e' spento di default e
+3. **L'accesso per Claude e' spento** (watchHost, listBigStorage, queryF5, TraceFox, callApi, watchCLI): e' spento di default e
    si accende solo a mano, in Impostazioni del programma → «Accesso per Claude». Il ponte non lo
    accende: lo dice e si ferma.
 4. **Il programma sta partendo o chiede la licenza**: il ponte aspetta 25 secondi; se non basta,
@@ -76,6 +82,7 @@ blocchino i file da sostituire: di solito Claude li riapre da solo, altrimenti s
   va abilitato nelle Impostazioni di queryF5, non aggirato.
 - Ogni chiamata resta scritta: in listBigStorage nel registro a destra (categoria «Claude»), in
   watchHost nel suo log, in queryF5 in `mcp-log.jsonl` e nell'elenco delle Impostazioni, in TraceFox
-  nel Monitor a destra (righe «Claude: ...»).
+  nel Monitor a destra (righe «Claude: ...»), in watchCLI nella Console del pannello in basso.
+- watchCLI: gli id dei monitor valgono finche' il programma resta aperto; si possono usare anche i nomi.
 - TraceFox: con il proxy fermo o la registrazione in pausa la sessione non cresce; dillo all'utente
   invece di chiedere ancora l'elenco. Per vedere traffico nuovo usa `list_transactions` con `since_id`.

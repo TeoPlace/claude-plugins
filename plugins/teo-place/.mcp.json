@@ -35,6 +35,12 @@
       "args": [
         "--mcp"
       ]
+    },
+    "watchcli": {
+      "command": "C:\\Program Files\\watchCLI\\watchCLI.exe",
+      "args": [
+        "--mcp"
+      ]
     }
   }
 }
